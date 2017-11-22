@@ -22,7 +22,7 @@ CPUDIR = include/proc
 .DEFAULT_GOAL = $(PROJECT).bin
 .PHONY: clean FORCE
 
-INCLUDES = -I include -I include/cmsis -I $(PROC_DIR)
+INCLUDES = -I include -I include/cmsis -I $(CPUDIR)
 DEFINES = -D__STARTUP_CLEAR_BSS -D__START=main
 ###############################################################################
 
@@ -58,11 +58,11 @@ clean:
 	@find . -name '*.o' -delete
 
 install: $(PROJECT).bin
-	./$(PROC_DIR)/install.sh
+	./$(PROC_DIR)/scripts/install.sh
 
 $(CPUDIR):
 	+@echo "Creating $@"
-	@ln -s ../$(PROC_DIR) $@
+	@ln -s ../$(PROC_DIR)/include $@
 ###############################################################################
 
 
@@ -70,7 +70,7 @@ $(CPUDIR):
 # Debug related recipes
 
 debug: $(PROJECT).bin
-	./$(PROC_DIR)/debug.sh
+	./$(PROC_DIR)/scripts/debug.sh
 
 TERMINAL=gnome-terminal
 OBJDUMP_FILE=output.txt

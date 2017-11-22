@@ -6,6 +6,5 @@ if [ -d "/media/$USERNAME/NODE_F767ZI" ]; then
 	echo "Copying badgerloop.bin to /media/$USERNAME/NODE_F767ZI"
 # J-Link
 else
-	JLinkExe -device STM32F767ZI -if SWD -speed 4000 -autoconnect 1 -CommanderScript ./proc/stm32f767zi/flash.jlink
+	JLinkExe -device STM32F767ZI -if SWD -speed 4000 -autoconnect 1 -CommanderScript ./proc/stm32f7xx/scripts/flash.jlink
 fi
-
