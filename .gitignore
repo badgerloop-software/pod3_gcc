@@ -1,0 +1,11 @@
+*.o
+*.d
+*.bin
+*.elf
+*.hex
+*.map
+*.axf
+*.swp
+include/proc
+output.txt
+.~*

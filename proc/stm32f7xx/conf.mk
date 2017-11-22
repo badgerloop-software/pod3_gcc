@@ -1,0 +1,9 @@
+# Project Settings
+CORTEX_M=7
+PROCESSOR=stm32f767zi
+ARCH_FLAGS=-mthumb -march=armv7e-m
+# got rid of -mcpu=cortex-m$(CORTEX_M)
+PROC_PREFIX=stm32_
+CPU_DEFINES=-DSTM32F7 -DSTM32F767xx
+VERSION_MAJOR=0
+VERSION_MINOR=1
