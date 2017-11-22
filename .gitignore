@@ -9,3 +9,4 @@
 include/proc
 output.txt
 .~*
+config.mk
