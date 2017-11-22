@@ -1,6 +1,10 @@
 #ifndef _CONFIG__H
 #define _CONFIG__H
 
+#ifdef __cplusplus
+ extern "C" {
+#endif
+
 #include <stdint.h>
 #include "defs.h"
 
@@ -40,5 +44,9 @@
 #define PLLR_VAL (((uint32_t) 5) << RCC_PLLCFGR_PLLR_Pos)	/* f_PLL_DSI_out = f_VCO / PLLR		*/
 /*****************************************************************************/
 /*****************************************************************************/
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif

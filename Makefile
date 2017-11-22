@@ -38,6 +38,10 @@ DEFINES = -D__STARTUP_CLEAR_BSS -D__START=main
 	+@echo "building $(notdir $<)"
 	@$(TOOLCHAIN)gcc $(CFLAGS) $(LDLIBS) -c -o $@ $<
 
+%.o: %.cpp
+	+@echo "building $(notdir $<)"
+	@$(TOOLCHAIN)g++ $(CXXFLAGS) $(LDLIBS) -c -o $@ $<
+
 $(PROJECT).elf: $(OBJECTS)
 	+@echo "linking $(notdir $@)"
 	@$(TOOLCHAIN)gcc $(LFLAGS) $^ $(CFLAGS) $(LDLIBS) -o $@
