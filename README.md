@@ -6,8 +6,7 @@ A bare-metal, multi-target GCC build for the Badgerloop pod.
 
 ## Workstation Setup
 
-A Debian-based Linux workstation is recommended, builds are not tested  
-on any other operating systems.
+A Debian-based Linux workstation is recommended, builds are not tested on any other operating systems.
 
 The primary developers use [Ubuntu GNOME 16.04 LTS](https://ubuntugnome.org/).
 
@@ -23,8 +22,7 @@ The primary developers use [Ubuntu GNOME 16.04 LTS](https://ubuntugnome.org/).
 
    `cd pod3_documentation && ./clone_others.sh`
 
-3. Follow the [instructions](https://github.com/texane/stlink/blob/master/doc/compiling.md)  
-to compile the [stlink](https://github.com/texane/stlink) repo from source
+3. Follow the [instructions](https://github.com/texane/stlink/blob/master/doc/compiling.md) to compile the [stlink](https://github.com/texane/stlink) repo from source
 
    Make sure to install everything they have listed.
 
