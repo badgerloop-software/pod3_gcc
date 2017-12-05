@@ -22,4 +22,5 @@ fi
 
 rm -f cfg
 ln -s proc/$DEV_FAM/$PROC_CHOICE cfg
+make clean
 echo "Project configured for $DEV_FAM$PROC_CHOICE."

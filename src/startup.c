@@ -72,7 +72,9 @@ void UsageFault_Handler (void) __attribute__((weak, alias("Default_Handler")));
 void SVC_Handler        (void) __attribute__((weak, alias("Default_Handler")));
 void DebugMon_Handler   (void) __attribute__((weak, alias("Default_Handler")));
 void PendSV_Handler     (void) __attribute__((weak, alias("Default_Handler")));
-void SysTick_Handler    (void) __attribute__((weak, alias("Default_Handler")));
+
+volatile unsigned int ticks = 0;
+void SysTick_Handler(void) { ticks++; }
 
 typedef void(*f_ptr)(void);
 const f_ptr __core_vectors[] __attribute__((section(".vectors"))) = {

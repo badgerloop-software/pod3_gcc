@@ -3,6 +3,7 @@
 *.elf
 *.hex
 *.map
+*.swp
 
 cfg
 output.txt

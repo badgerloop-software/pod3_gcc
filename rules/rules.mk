@@ -21,7 +21,9 @@ $(OBJDUMP_FILE): $(PROJECT).bin
 	+@echo "Dumping disassembly from $(PROJECT).elf to $(OBJDUMP_FILE)."
 
 debug: install
+	sleep 2
 	st-util &
+	sleep 2
 	@$(TOOLCHAIN)gdb $(PROJECT).elf
 	pkill st-util
 
