@@ -6,4 +6,5 @@
 *.swp
 
 cfg
+src/drivers
 output.txt

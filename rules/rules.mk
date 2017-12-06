@@ -7,6 +7,7 @@
 	@$(TOOLCHAIN)gcc $(CFLAGS) -c -o $@ $<
 
 $(PROJECT).elf: $(OBJECTS)
+	+@echo ""
 	+@echo "linking $(notdir $@)"
 	@$(TOOLCHAIN)gcc $(CFLAGS) $^ $(LFLAGS) -o $@
 
@@ -45,7 +46,6 @@ cfg/conf.mk:
 
 check_configured:
 	@test -d cfg
-	+@echo "Configured for:"
-	+@echo ""
+	+@echo "Configured for:" && echo ""
 	+@readlink cfg
 	+@echo ""
