@@ -17,6 +17,9 @@ extern const uint32_t MSIRangeTable[12];    /*!< MSI ranges table values     */
 extern void SystemInit(void);
 extern void SystemCoreClockUpdate(void);
 
+#define LED3_PIN	3
+#define LED_PORT	GPIOB
+
 /************************* Miscellaneous Configuration ************************/
 /*!< Uncomment the following line if you need to relocate your vector Table in
      Internal SRAM. */

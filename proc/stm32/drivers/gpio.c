@@ -20,32 +20,42 @@ static int verify_gpio_port(GPIO_TypeDef* port) {
 	return -1;
 }
 
-/* This function doesn't belong */
 int gpio_setClock(GPIO_TypeDef* port, bool state) {
+
+	volatile uint32_t *to_set;
+#ifdef STM32F7
+	to_set = &RCC->AHB1ENR;
+#else
+	to_set = &RCC->AHB2ENR;
+#endif
 
 	uint8_t bit_num = 0;
 	switch ((uint32_t) port) {
-		case GPIOA_BASE: bit_num = 0; break;
-		case GPIOB_BASE: bit_num = 1; break;
-		case GPIOC_BASE: bit_num = 2; break;
 #ifdef STM32F7
-		case GPIOD_BASE: bit_num = 3; break;
-		case GPIOE_BASE: bit_num = 4; break;
-		case GPIOF_BASE: bit_num = 5; break;
-		case GPIOG_BASE: bit_num = 6; break;
-		case GPIOH_BASE: bit_num = 7; break;
-		case GPIOI_BASE: bit_num = 8; break;
-		case GPIOJ_BASE: bit_num = 9; break;
-		case GPIOK_BASE: bit_num =10; break;
+		case GPIOA_BASE: bit_num = RCC_AHB1LPENR_GPIOALPEN_Pos; break;
+		case GPIOB_BASE: bit_num = RCC_AHB1LPENR_GPIOBLPEN_Pos; break;
+		case GPIOC_BASE: bit_num = RCC_AHB1LPENR_GPIOCLPEN_Pos; break;
+		case GPIOD_BASE: bit_num = RCC_AHB1LPENR_GPIODLPEN_Pos; break;
+		case GPIOE_BASE: bit_num = RCC_AHB1LPENR_GPIOELPEN_Pos; break;
+		case GPIOF_BASE: bit_num = RCC_AHB1LPENR_GPIOFLPEN_Pos; break;
+		case GPIOG_BASE: bit_num = RCC_AHB1LPENR_GPIOGLPEN_Pos; break;
+		case GPIOH_BASE: bit_num = RCC_AHB1LPENR_GPIOHLPEN_Pos; break;
+		case GPIOI_BASE: bit_num = RCC_AHB1LPENR_GPIOILPEN_Pos; break;
+		case GPIOJ_BASE: bit_num = RCC_AHB1LPENR_GPIOJLPEN_Pos; break;
+		case GPIOK_BASE: bit_num = RCC_AHB1LPENR_GPIOKLPEN_Pos; break;
+#else
+		case GPIOA_BASE: bit_num = RCC_AHB2ENR_GPIOAEN_Pos; break;
+		case GPIOB_BASE: bit_num = RCC_AHB2ENR_GPIOBEN_Pos; break;
+		case GPIOC_BASE: bit_num = RCC_AHB2ENR_GPIOCEN_Pos; break;
 #endif
 		default: return -1;
 	}
 	
-	RCC->AHB1ENR &= ~(0x1 << bit_num);
-	while (RCC->AHB1ENR & (0x1 << bit_num)) {;}
+	*to_set &= ~(0x1 << bit_num);
+	while (*to_set & (0x1 << bit_num)) {;}
 		
 	if (state)
-		RCC->AHB1ENR |= 0x1 << bit_num;
+		*to_set |= 0x1 << bit_num;
 	
 	return 0;
 }
