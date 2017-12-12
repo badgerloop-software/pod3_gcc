@@ -25,6 +25,7 @@ include rules/flags.mk
 # Shared
 OBJECTS += src/startup.o
 OBJECTS += src/main.o
+OBJECTS += src/pcbuffer.o
 
 # Processor Specific
 OBJECTS += cfg/system.o
@@ -33,6 +34,7 @@ OBJECTS += cfg/vectors.o
 # Drivers
 OBJECTS += src/drivers/gpio.o
 OBJECTS += src/drivers/rcc.o
+OBJECTS += src/drivers/usart.o
 
 $(OBJECTS): | check_configured
 

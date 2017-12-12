@@ -2,6 +2,7 @@
 #define __SYSTEM_STM32F7XX_H
 
 #include "stm32f7xx.h"
+#include "common.h" // We want to remove this at some point
 
 #define HSE_VALUE	((uint32_t) 8000000) 
 #define HSI_VALUE	((uint32_t) 16000000) 
@@ -28,23 +29,9 @@
 #define PLLQ_VAL (((uint32_t) 10) << RCC_PLLCFGR_PLLQ_Pos)	/* f_USB_SDMMC_RNG = f_VCO / PLLQ	*/
 #define PLLR_VAL (((uint32_t) 5) << RCC_PLLCFGR_PLLR_Pos)	/* f_PLL_DSI_out = f_VCO / PLLR		*/
 
-#define APB1_F	(SystemCoreClock >> APBPrescTable[(RCC->CFGR & RCC_CFGR_PPRE1) >> RCC_CFGR_PPRE1_Pos])
-#define APB2_F	(SystemCoreClock >> APBPrescTable[(RCC->CFGR & RCC_CFGR_PPRE2) >> RCC_CFGR_PPRE2_Pos])
-#define HCLK	SystemCoreClock
-#define NEWLINE_GUARD   (curr == '\n' && prev != '\r') || (curr == '\r' && prev != '\n')
-
 #define LED_PORT	GPIOB
 #define LED1_PIN	0
 #define LED2_PIN	7
 #define LED3_PIN	14
-
-extern uint32_t SystemCoreClock;          /*!< System Clock Frequency (Core Clock) */
-extern volatile unsigned int ticks;
-
-extern const uint8_t  AHBPrescTable[16];    /*!< AHB prescalers table values */
-extern const uint8_t  APBPrescTable[8];     /*!< APB prescalers table values */
-  
-extern void SystemInit(void);
-extern void SystemCoreClockUpdate(void);
 
 #endif
