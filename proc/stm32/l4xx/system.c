@@ -83,4 +83,6 @@ void SystemCoreClockUpdate(void) {
 	/* Compute HCLK clock frequency */
 	tmp = AHBPrescTable[((RCC->CFGR & RCC_CFGR_HPRE) >> 4U)];
 	SystemCoreClock >>= tmp;
+
+	SysTick_Config(SystemCoreClock / 1000);
 }

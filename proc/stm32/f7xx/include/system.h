@@ -33,7 +33,13 @@
 #define HCLK	SystemCoreClock
 #define NEWLINE_GUARD   (curr == '\n' && prev != '\r') || (curr == '\r' && prev != '\n')
 
+#define LED_PORT	GPIOB
+#define LED1_PIN	0
+#define LED2_PIN	7
+#define LED3_PIN	14
+
 extern uint32_t SystemCoreClock;          /*!< System Clock Frequency (Core Clock) */
+extern volatile unsigned int ticks;
 
 extern const uint8_t  AHBPrescTable[16];    /*!< AHB prescalers table values */
 extern const uint8_t  APBPrescTable[8];     /*!< APB prescalers table values */

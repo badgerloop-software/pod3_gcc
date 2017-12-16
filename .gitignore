@@ -3,6 +3,8 @@
 *.elf
 *.hex
 *.map
+*.swp
 
 cfg
+src/drivers
 output.txt

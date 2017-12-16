@@ -7,6 +7,7 @@
 	@$(TOOLCHAIN)gcc $(CFLAGS) -c -o $@ $<
 
 $(PROJECT).elf: $(OBJECTS)
+	+@echo ""
 	+@echo "linking $(notdir $@)"
 	@$(TOOLCHAIN)gcc $(CFLAGS) $^ $(LFLAGS) -o $@
 
@@ -21,7 +22,9 @@ $(OBJDUMP_FILE): $(PROJECT).bin
 	+@echo "Dumping disassembly from $(PROJECT).elf to $(OBJDUMP_FILE)."
 
 debug: install
+	sleep 2
 	st-util &
+	sleep 2
 	@$(TOOLCHAIN)gdb $(PROJECT).elf
 	pkill st-util
 
@@ -43,7 +46,6 @@ cfg/conf.mk:
 
 check_configured:
 	@test -d cfg
-	+@echo "Configured for:"
-	+@echo ""
+	+@echo "Configured for:" && echo ""
 	+@readlink cfg
 	+@echo ""
